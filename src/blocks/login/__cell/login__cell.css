@@ -1,0 +1,13 @@
+.login__cell {
+  margin: 0 auto;
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.login__cell:last-of-type {
+  margin-bottom: 0;
+}

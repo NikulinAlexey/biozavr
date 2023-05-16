@@ -1,0 +1,13 @@
+.login {
+  text-align: center;
+  width: 728px;
+  margin: 0 auto;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup__link {
+  color: #000;
+}

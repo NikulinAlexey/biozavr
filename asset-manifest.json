@@ -1,16 +1,20 @@
 {
   "files": {
-    "main.css": "/biozavr/static/css/main.073c9b0a.css",
-    "main.js": "/biozavr/static/js/main.94ca4ed0.js",
+    "main.css": "/biozavr/static/css/main.540ccce3.css",
+    "main.js": "/biozavr/static/js/main.74672042.js",
     "static/js/787.200f0069.chunk.js": "/biozavr/static/js/787.200f0069.chunk.js",
-    "static/media/logo.svg": "/biozavr/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/Poppins-Medium.woff": "/biozavr/static/media/Poppins-Medium.26c20b0f1f2b2d0d7f4e.woff",
+    "static/media/Poppins-Bold.woff": "/biozavr/static/media/Poppins-Bold.c4e77e991e26d17e68c5.woff",
+    "static/media/Poppins-Medium.woff2": "/biozavr/static/media/Poppins-Medium.a19883c1cd77faacd63d.woff2",
+    "static/media/Poppins-Bold.woff2": "/biozavr/static/media/Poppins-Bold.b138d0279be06a607215.woff2",
+    "static/media/Poppins-SemiBold.woff2": "/biozavr/static/media/Poppins-SemiBold.810728e0001e1f7c0a71.woff2",
     "index.html": "/biozavr/index.html",
-    "main.073c9b0a.css.map": "/biozavr/static/css/main.073c9b0a.css.map",
-    "main.94ca4ed0.js.map": "/biozavr/static/js/main.94ca4ed0.js.map",
+    "main.540ccce3.css.map": "/biozavr/static/css/main.540ccce3.css.map",
+    "main.74672042.js.map": "/biozavr/static/js/main.74672042.js.map",
     "787.200f0069.chunk.js.map": "/biozavr/static/js/787.200f0069.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.94ca4ed0.js"
+    "static/css/main.540ccce3.css",
+    "static/js/main.74672042.js"
   ]
 }

@@ -1,13 +1,18 @@
+import Quiz from './Quiz';
+import Spinner from './Spinner';
 
+function Main({
+  isSpinnerVisible,
+}) {
 
-// import { Link } from 'react-router-dom';
-
-function Main({ loggedIn }) {
   return (
-    <div className="content">
-      <h1 className="title">Какой-то заголовок</h1>
-    </div>
+    <main className="content">
+      <div className='content__container'>
+        <Spinner isSpinnerVisible={isSpinnerVisible} />
+        <Quiz />
+      </div>
+    </main>
   );
 }
 
-export default Main;
+export default Main; 

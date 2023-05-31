@@ -1,17 +1,18 @@
-.header__container {
-  width: 880px;
+.content__container {
+  max-width: 880px;
   margin: 0 auto;
+  margin-bottom: 60px;
   transition: all .3s ease-in-out;
 }
 
 @media screen and (max-width: 960px) {
-  .header__container {
+  .content__container {
     width: calc(100% - 60px);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .header__container {
-    width: 100%;
+  .content__container {
+    width: calc(100% - 40px);
   }
 }

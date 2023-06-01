@@ -1,10 +1,12 @@
 .auth-form__submit {
   height: 67px;
+  min-height: 67px;
   width: 100%;
   border: none;
   border-radius: 5px;
   background-color: #cbd5e1;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 18px;
   opacity: 1;
   margin-top: 30px;
   margin-bottom: 15px;
@@ -21,5 +23,6 @@
   .auth-form__submit {
     height: 60px;
     margin-bottom: 20px;
+    font-size: 16px;
   }
 }

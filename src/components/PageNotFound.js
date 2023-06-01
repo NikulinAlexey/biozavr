@@ -7,7 +7,7 @@ function PageNotFound({ loggedIn }) {
 
   useEffect(() => {
     if (loggedIn) {
-      setErrors({ buttonPath: '/', errorText: 'Вернуться на главную'})
+      setErrors({ buttonPath: '/biozavr', errorText: 'Вернуться на главную'})
     }
     else {
       setErrors({ buttonPath: '/sign-in', errorText: 'Войти' })

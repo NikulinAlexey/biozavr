@@ -94,7 +94,7 @@ function App() {
         <Header email={email} loggedIn={loggedIn} onSignout={onSignout} />
 
         <Routes>
-          <Route path="/" element={
+          <Route path="/biozavr" element={
             <ProtectedRouteElement
               element={Main}
               loggedIn={loggedIn}

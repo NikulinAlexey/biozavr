@@ -1,0 +1,9 @@
+.quiz__question-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 450px;
+  border-radius: 5px;
+  margin-bottom: 40px;
+}

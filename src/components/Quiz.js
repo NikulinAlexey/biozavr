@@ -1,25 +1,38 @@
 import { useState, useEffect } from "react";
 
-function Quiz() {
-  const questions = [
-    'Сколько мембран у рибосомы?',
-    'Что такое АТФ?',
-    'Перечислите типы РНК',
-    'Из чего состоит клеточная стенка грибов?'
-  ];
+function Quiz({ selectedTopics }) {
+  const [acceptedQuestions, setAcceptedQuestions] = useState([]);
+
+  const [currentQuestion, setCurrentQuestion] = useState('');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
-  
-  function setNextQuestion() {
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
+
+  function setRandomIndex(min, max) {
+    const randomIndex = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    setCurrentQuestionIndex(randomIndex);
   }
-  function setPreviousQuestion() {
-    setCurrentQuestionIndex(currentQuestionIndex  - 1);
+
+  function handleButtonClick() {
+    setRandomIndex(0, acceptedQuestions.length - 1);
   }
 
   useEffect(() => {
-    setCurrentQuestion(questions[currentQuestionIndex]);
-  }, [questions, currentQuestionIndex])
+    let copy = Object.assign([], acceptedQuestions);
+
+    selectedTopics.forEach((item) => {
+      item.questions.forEach((question) => {
+        copy.push(question)
+      })
+    });
+
+    setAcceptedQuestions(copy);
+  }, []);
+
+  useEffect(() => {
+    const currentQuestion = acceptedQuestions[currentQuestionIndex];
+
+    setCurrentQuestion(currentQuestion);
+  },[currentQuestionIndex, acceptedQuestions])
   
   return (
     <section className="quiz">
@@ -29,10 +42,9 @@ function Quiz() {
         </p>
       </div>
       <div className="quiz__buttons">
-        <div className="quiz__button" onClick={setPreviousQuestion}> Назад </div>
-        <div className="quiz__button" onClick={setNextQuestion} > Вперед </div>
+        <div className="quiz__button" onClick={handleButtonClick}> Следующий </div>
       </div>
-    </section>  
+    </section>
   )
 };
 

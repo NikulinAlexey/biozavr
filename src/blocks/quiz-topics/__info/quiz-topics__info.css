@@ -1,0 +1,11 @@
+.quiz-topics__info {
+  visibility: hidden;
+  margin: 20px auto 20px auto;
+  color: red;
+  opacity: .8;
+  transition: visibility .3s ease-in-out;
+}
+
+.quiz-topics__info.active {
+  visibility: visible;
+}

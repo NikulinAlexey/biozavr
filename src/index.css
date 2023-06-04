@@ -26,6 +26,19 @@
 @import url(./blocks/quiz/__question/quiz__question.css);
 @import url(./blocks/quiz/__question-container/quiz__question-container.css);
 
+@import url(./blocks/quiz-topics/quiz-topics.css);
+@import url(./blocks/quiz-topics/__form/quiz-topics__form.css);
+@import url(./blocks/quiz-topics/__list/quiz-topics__list.css);
+@import url(./blocks/quiz-topics/__item/quiz-topics__item.css);
+@import url(./blocks/quiz-topics/__label/quiz-topics__label.css);
+@import url(./blocks/quiz-topics/__input/quiz-topics__input.css);
+@import url(./blocks/quiz-topics/__symbol/quiz-topics__symbol.css);
+@import url(./blocks/quiz-topics/__button/quiz-topics__button.css);
+@import url(./blocks/quiz-topics/__info/quiz-topics__info.css);
+@import url(./blocks/quiz-topics/__label-text/quiz-topics__label-text.css);
+@import url(./blocks/quiz-topics/__pseudo-item/quiz-topics__pseudo-item.css);
+@import url(./blocks/quiz-topics/__button/_type/quiz-topics_button_disabled.css);
+
 @import url(./blocks/auth-form/auth-form.css);
 @import url(./blocks/auth-form/__link/auth-form__link.css);
 @import url(./blocks/auth-form/__form/auth-form__form.css);

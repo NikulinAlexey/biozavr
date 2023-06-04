@@ -1,0 +1,11 @@
+.quiz-topics__label {
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  transition: opacity .3s ease-in-out;
+}
+
+.quiz-topics__label:hover {
+  opacity: .65;
+  cursor: pointer;
+}

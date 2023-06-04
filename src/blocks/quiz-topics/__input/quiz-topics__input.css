@@ -1,0 +1,25 @@
+.quiz-topics__input {
+  border: 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #bcbcc4;
+  background-color: transparent;
+  margin-top: 5px;
+  font-size: 14px;
+  font-family: inherit;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.quiz-topics__input:checked+.quiz-topics__pseudo-item {
+  background-image: url(../../../images/icons8-галочка-50.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.quiz-topics__input:disabled+.quiz-topics__pseudo-item {
+  background-color: transparent;
+}

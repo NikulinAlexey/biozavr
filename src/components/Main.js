@@ -1,4 +1,5 @@
-import Quiz from './Quiz';
+import { Outlet } from 'react-router-dom';
+
 import Spinner from './Spinner';
 
 function Main({
@@ -9,7 +10,7 @@ function Main({
     <main className="content">
       <div className='content__container'>
         <Spinner isSpinnerVisible={isSpinnerVisible} />
-        <Quiz />
+        <Outlet />
       </div>
     </main>
   );

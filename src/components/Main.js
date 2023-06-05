@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 import Spinner from './Spinner';
 
@@ -11,6 +11,7 @@ function Main({
       <div className='content__container'>
         <Spinner isSpinnerVisible={isSpinnerVisible} />
         <Outlet />
+        <Link to='quiz-topics'>Выбрать тему квиза</Link>
       </div>
     </main>
   );

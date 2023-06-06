@@ -12,7 +12,7 @@ function Main({
       <div className='content__container'>
         <Spinner isSpinnerVisible={isSpinnerVisible} />
         <Outlet />
-        {currentPath === '/biozavr' ? <Link to='quiz-topics'>Выбрать тему квиза</Link> : <></>}
+        {currentPath === '/biozavr' || '/' ? <Link to='quiz-topics'>Выбрать тему квиза</Link> : <></>}
         
       </div>
     </main>

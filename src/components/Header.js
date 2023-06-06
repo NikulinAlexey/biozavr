@@ -44,7 +44,7 @@ function Header({ email, loggedIn, onSignout }) {
         </nav>
 
         <div className={`header__bar ${isBurgerClicked ? 'active' : ''}`}>
-          <Link className="header__logo">БИОЗАВР</Link>
+          <Link to='/biozavr' className="header__logo">БИОЗАВР</Link>
 
           <div className={`${loggedIn ? 'header__burger' : ''} ${isBurgerClicked ? 'active' : ''}`} onClick={handleBurgerClick}>
             <span></span>

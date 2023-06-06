@@ -1,4 +1,5 @@
 .quiz__question {
   font-size: 72px;
   text-align: center;
+  margin: 0;
 }

@@ -301,7 +301,7 @@ function App() {
           <Route path='*' element={<PageNotFound loggedIn={loggedIn} />} />
         </Routes>
 
-        <Footer loggedIn={loggedIn} />
+        {/* <Footer loggedIn={loggedIn} /> */}
       </div>
 
       {/* <InfoTooltip

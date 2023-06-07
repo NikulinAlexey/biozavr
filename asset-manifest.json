@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/biozavr/static/css/main.fdf66c50.css",
+    "main.css": "/biozavr/static/css/main.c8a6754b.css",
     "main.js": "/biozavr/static/js/main.5ad3ae34.js",
     "static/js/787.200f0069.chunk.js": "/biozavr/static/js/787.200f0069.chunk.js",
     "static/media/Poppins-Medium.woff": "/biozavr/static/media/Poppins-Medium.26c20b0f1f2b2d0d7f4e.woff",
@@ -9,12 +9,12 @@
     "static/media/Poppins-Bold.woff2": "/biozavr/static/media/Poppins-Bold.b138d0279be06a607215.woff2",
     "static/media/Poppins-SemiBold.woff2": "/biozavr/static/media/Poppins-SemiBold.810728e0001e1f7c0a71.woff2",
     "index.html": "/biozavr/index.html",
-    "main.fdf66c50.css.map": "/biozavr/static/css/main.fdf66c50.css.map",
+    "main.c8a6754b.css.map": "/biozavr/static/css/main.c8a6754b.css.map",
     "main.5ad3ae34.js.map": "/biozavr/static/js/main.5ad3ae34.js.map",
     "787.200f0069.chunk.js.map": "/biozavr/static/js/787.200f0069.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fdf66c50.css",
+    "static/css/main.c8a6754b.css",
     "static/js/main.5ad3ae34.js"
   ]
 }

@@ -12,6 +12,7 @@
   justify-content: center;
   opacity: 1;
   transition: opacity .3s ease-in-out;
+  user-select: none;
 }
 
 .quiz__button:hover {

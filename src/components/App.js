@@ -7,8 +7,9 @@ import Quiz from './Quiz';
 import Main from './Main';
 import Login from './Login';
 import Header from './Header';
-import Footer from './Footer';
-import * as auth from '../auth';
+import AddForm from './AddForm';
+// import Footer from './Footer';
+import * as api from '../utils/Api';
 import Register from './Register';
 import QuizTopics from './QuizTopics';
 // import InfoTooltip from './InfoTooltip';
@@ -775,6 +776,7 @@ function App() {
     // },
   ]
   const [selectedTopics, setSelectedTopics] = useState([]);
+  const [newQuestionData, setNewQuestionData] = useState({});
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
@@ -796,7 +798,7 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt')
-      auth.checkToken(jwt)
+      api.checkToken(jwt)
         .then(({ email }) => {
           if (email) {
             setEmail(email);
@@ -826,7 +828,7 @@ function App() {
     setLoggedIn(true);
   }
   function handleRegister(password, email) {
-    auth.register(password, email)
+    api.register(password, email)
       .then(() => {
         navigate('/sign-in');
       })
@@ -838,7 +840,7 @@ function App() {
       })
   }
   function handleAuthorize(password, email) {
-    auth.authorize(password, email)
+    api.authorize(password, email)
       .then(data => {
         if (data.token) {
           onLogin(email, data)
@@ -850,6 +852,18 @@ function App() {
       .catch((err) => {
         console.log(err)
       })
+  }
+
+  function handleSubmitQuestion(questionData) {
+    console.log(questionData);
+    //post запрос на создание экземпляра вопроса в базе
+    // api.postQuestion(questionData)
+    //   .then((question) => {
+    //     console.log(question)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
   }
 
   return (
@@ -867,6 +881,7 @@ function App() {
           >
             <Route path='quiz' element={<Quiz selectedTopics={selectedTopics} />} />
             <Route path='quiz-topics' element={<QuizTopics topics={topics} handleSelectTopic={handleSelectTopic} />} />
+            <Route path='add-form' element={<AddForm handleSubmit={handleSubmitQuestion}/>}  />
           </Route>
 
           <Route path='/sign-in' element={<Login handleAuthorize={handleAuthorize} />} />

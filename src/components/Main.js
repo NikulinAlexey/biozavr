@@ -12,8 +12,14 @@ function Main({
       <div className='content__container'>
         <Spinner isSpinnerVisible={isSpinnerVisible} />
         <Outlet />
-        {currentPath === '/biozavr' ? <Link to='quiz-topics'>Выбрать тему квиза</Link> : <></>}
-        
+        {currentPath === '/biozavr' ?
+          <ul className='content__link-list'>
+            <Link to='quiz-topics'>Выбрать тему квиза</Link>
+            <Link to='add-form'>Добавить вопрос для теста</Link>
+          </ul>
+          :
+          <></>
+        }
       </div>
     </main>
   );

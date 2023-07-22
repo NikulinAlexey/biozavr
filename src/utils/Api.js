@@ -55,7 +55,7 @@ export function postQuestion(questionData) {
       line: `${questionData.line}`,
       source: `${questionData.source}`,
       answer: `${questionData.answer}`,
-      explanation: `${questionData.subexplanationText}`,
+      explanation: `${questionData.explanation}`,
       instruction: `${questionData.instruction}`,
     }),
     credentials: "include",

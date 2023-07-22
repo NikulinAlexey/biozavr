@@ -1,6 +1,6 @@
 .add-form {
   text-align: center;
-  width: 360px;
+  width: 720px;
   margin: 0 auto;
   font-family: inherit;
   display: flex;
@@ -12,6 +12,6 @@
 
 @media screen and (max-width: 768px) {
   .add-form {
-    width: 280px;
+    width: 100%;
   }
 }

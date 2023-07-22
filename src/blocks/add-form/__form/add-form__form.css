@@ -1,7 +1,15 @@
 .add-form__form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: min-content;
+  gap: 10px;
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .add-form__form {
+    grid-template-columns: 1fr;
+  }
 }

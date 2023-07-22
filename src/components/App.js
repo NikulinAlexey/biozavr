@@ -12,7 +12,7 @@ import AddForm from './AddForm';
 import * as api from '../utils/Api';
 import Register from './Register';
 import QuizTopics from './QuizTopics';
-// import InfoTooltip from './InfoTooltip';
+import InfoTooltip from './InfoTooltip';
 import PageNotFound from './PageNotFound';
 import ProtectedRouteElement from './ProtectedRouteElement';
 

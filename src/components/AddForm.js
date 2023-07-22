@@ -1,6 +1,7 @@
 import useFormWithValidation from "../hooks/useValidationForm";
 
 import { useState } from 'react';
+import FormCell from './FormCell';
 
 function AddForm({
   title = 'Загрузить новый вопрос',
@@ -20,151 +21,106 @@ function AddForm({
 
       <h2 className="add-form__title"> {title} </h2>
 
-      <form className="add-form__form" onSubmit={onSubmit}>
-        <label className="add-form__label" htmlFor="image-input">Ссылка на картинку:</label>
-        <input
-          required
-          type="url"
-          name="image"
+      <form className="add-form__form" onSubmit={onSubmit} >
+        <FormCell
+          type='url'
           minLength='5'
-          id="image-input"
-          placeholder="Вставьте ссылку на картинку"
-          value={values.image || ''}
-          onChange={handleChange}
-          className={`add-form__input ${errors.image === undefined || errors.image === '' ? '' : 'add-form__input_type_error'}`}
+          errors={errors}
+          name='image'
+          values={values}
+          handleChange={handleChange}
+          labelText='Ссылка на картинку'
+          placeholder='Вставьте ссылку на картинку'
         />
-        <span id="name-input-error" className="add-form__error">
-          {errors?.image}
-        </span>
 
-        <label className="add-form__label" htmlFor="mainText-input">Основной текст:</label>
-        <input
-          required
-          type="text"
-          name="mainText"
+        <FormCell
+          type='text'
           minLength='5'
-          id="mainText-input"
-          placeholder="Напишите основной текст вопроса"
-          value={values.mainText || ''}
-          onChange={handleChange}
-          className={`add-form__input ${errors.mainText === undefined || errors.mainText === '' ? '' : 'add-form__input_type_error'}`}
+          errors={errors}
+          name='mainText'
+          values={values}
+          handleChange={handleChange}
+          labelText='Основной текст'
+          placeholder='Напишите основной текст вопроса'
         />
-        <span id="name-input-error" className="add-form__error">
-          {errors?.mainText}
-        </span>
 
-        <label className="add-form__label" htmlFor="subText-input">Сабтекст:</label>
-        <input
-          required
-          type="text"
-          name="subText"
+        <FormCell
+          type='text'
           minLength='5'
-          id="subText-input"
-          placeholder="Напишите вспомогательный текст вопроса"
-          value={values.subText || ''}
-          onChange={handleChange}
-          className={`add-form__input ${errors.subText === undefined || errors.subText === '' ? '' : 'add-form__input_type_error'}`}
+          errors={errors}
+          name='subText'
+          values={values}
+          handleChange={handleChange}
+          labelText='Сабтекст'
+          placeholder='Напишите вспопогательный текст вопроса'
         />
-        <span id="name-input-error" className="add-form__error">
-          {errors?.subText}
-        </span>
 
-        <label className="add-form__label" htmlFor="theme-input">Тема:</label>
-        <input
-          required
-          type="text"
-          name="theme"
+        <FormCell
+          type='text'
           minLength='3'
-          id="theme-input"
-          placeholder="Напишите тему вопроса"
-          value={values.theme || ''}
-          onChange={handleChange}
-          className={`add-form__input ${errors.theme === undefined || errors.theme === '' ? '' : 'add-form__input_type_error'}`}
+          errors={errors}
+          name='theme'
+          values={values}
+          handleChange={handleChange}
+          labelText='Тема'
+          placeholder='Напишите тему вопроса'
         />
-        <span id="name-input-error" className="add-form__error">
-          {errors?.theme}
-        </span>
 
-        <label className="add-form__label" htmlFor="line-input">Линия:</label>
-        <input
-          required
-          type="text"
-          name="line"
+        <FormCell
+          type='text'
           minLength='1'
-          maxLength = '2'
-          id="line-input"
-          placeholder="Укажите линию вопроса"
-          value={values.line || ''}
-          onChange={handleChange}
-          className={`add-form__input ${errors.line === undefined || errors.line === '' ? '' : 'add-form__input_type_error'}`}
+          maxLength='2'
+          errors={errors}
+          name='line'
+          values={values}
+          handleChange={handleChange}
+          labelText='Линия'
+          placeholder='Линию вопроса'
         />
-        <span id="name-input-error" className="add-form__error">
-          {errors?.line}
-        </span>
 
-        <label className="add-form__label" htmlFor="source-input">Источник:</label>
-        <input
-          required
-          type="text"
-          name="source"
+        <FormCell
+          type='text'
           minLength='2'
-          id="source-input"
-          placeholder="Укажите источник вопроса"
-          value={values.source || ''}
-          onChange={handleChange}
-          className={`add-form__input ${errors.source === undefined || errors.source === '' ? '' : 'add-form__input_type_error'}`}
+          errors={errors}
+          name='source'
+          values={values}
+          handleChange={handleChange}
+          labelText='Источник'
+          placeholder='Напишите источник вопроса'
         />
-        <span id="name-input-error" className="add-form__error">
-          {errors?.source}
-        </span>
 
-        <label className="add-form__label" htmlFor="answer-input">Ответ:</label>
-        <input
-          required
-          type="text"
-          name="answer"
+        <FormCell
+          type='text'
           minLength='2'
-          id="answer-input"
-          placeholder="Укажите ответ на вопрос"
-          value={values.answer || ''}
-          onChange={handleChange}
-          className={`add-form__input ${errors.answer === undefined || errors.answer === '' ? '' : 'add-form__input_type_error'}`}
+          errors={errors}
+          name='answer'
+          values={values}
+          handleChange={handleChange}
+          labelText='Ответ'
+          placeholder='Напишите ответ на вопрос'
         />
-        <span id="name-input-error" className="add-form__error">
-          {errors?.answer}
-        </span>
 
-        <label className="add-form__label" htmlFor="explanation-input">Пояснение:</label>
-        <input
-          required
-          type="text"
-          name="explanation"
+        <FormCell
+          type='text'
           minLength='2'
-          id="explanation-input"
-          placeholder="Укажите пояснение к ответу"
-          value={values.explanation || ''}
-          onChange={handleChange}
-          className={`add-form__input ${errors.explanation === undefined || errors.explanation === '' ? '' : 'add-form__input_type_error'}`}
+          errors={errors}
+          name='explanation'
+          values={values}
+          handleChange={handleChange}
+          labelText='Пояснение'
+          placeholder='Укажите пояснение к вопросу'
         />
-        <span id="name-input-error" className="add-form__error">
-          {errors?.explanation}
-        </span>
 
-        <label className="add-form__label" htmlFor="instruction-input">Инструкция:</label>
-        <input
-          required
-          type="text"
-          name="instruction"
+        <FormCell
+          type='text'
           minLength='2'
-          id="instruction-input"
-          placeholder="Укажите инструкцию к таблице"
-          value={values.instruction || ''}
-          onChange={handleChange}
-          className={`add-form__input ${errors.instruction === undefined || errors.instruction === '' ? '' : 'add-form__input_type_error'}`}
+          errors={errors}
+          name='instruction'
+          values={values}
+          handleChange={handleChange}
+          labelText='Инструкция'
+          placeholder='Укажите инструкцию к вопросу'
         />
-        <span id="name-input-error" className="add-form__error">
-          {errors?.instruction}
-        </span>
 
         <button
           className={`add-form__submit ${!isValid ? 'add-form__submit_type_inactive' : ''}`}

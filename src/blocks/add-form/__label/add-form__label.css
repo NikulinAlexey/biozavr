@@ -2,3 +2,9 @@
   margin-bottom: 5px;
   text-align: left;
 }
+
+@media screen and (max-width: 768px) {
+  .add-form__label {
+    font-size: 14px;
+  }
+}

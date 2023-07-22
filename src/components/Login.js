@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
 import AuthForm from './AuthForm';
 // import { Link } from 'react-router-dom';
 
-function Login () {
+function Login({ handleAuthorize }) {
   return (
-    <AuthForm title='Вход' textOfButton='Войти'/>
+    <AuthForm title='Вход' textOfButton='Войти' handleSubmit={handleAuthorize}/>
   )
 }
 

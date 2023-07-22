@@ -1,10 +1,13 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 import Spinner from './Spinner';
 
 function Main({
   isSpinnerVisible,
 }) {
+
+
 
   const currentPath = useLocation().pathname;
   return (

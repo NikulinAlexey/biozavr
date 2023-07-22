@@ -1,4 +1,5 @@
 import useFormWithValidation from "../hooks/useValidationForm";
+// import { useEffect } from "react";
 
 function AuthForm({
   title,
@@ -9,8 +10,10 @@ function AuthForm({
   const { values, handleChange, resetForm, isValid, errors } = useFormWithValidation();
 
   function onSubmit(e) {
+    e.preventDefault();
     const { email, password } = values;
-    handleSubmit(e, password, email)
+    
+    handleSubmit(password, email)
     resetForm();
   }
 
@@ -27,7 +30,7 @@ function AuthForm({
           minLength='5'
           id="email-input"
           placeholder="Email"
-          value={values.email}
+          value={values.email || ''}
           onChange={handleChange}
           className={`auth-form__input ${errors.email === undefined || errors.email === '' ? '' : 'auth-form__input_type_error'}`}
         />
@@ -42,7 +45,7 @@ function AuthForm({
           id="password-input"
           placeholder="Пароль"
           onChange={handleChange}
-          value={values.password}
+          value={values.password || ''}
           className={`auth-form__input ${errors.password === undefined || errors.password === '' ? '' : 'auth-form__input_type_error'}`}
         />
         <span id="name-input-error" className="auth-form__error">

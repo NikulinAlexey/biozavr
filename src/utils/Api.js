@@ -1,5 +1,8 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
-export const headers = { authorization: 'Мой токен', 'Content-Type': 'application/json' };
+export const BASE_URL = 'http://localhost:3001';
+export const headers = {
+  authorization: 'c04ae5cc-badb-4402-8d81-d912a16f1158',
+  'Content-Type': 'application/json'
+};
 
 // Авторизация:
 export function register(password, email) {
@@ -8,13 +11,16 @@ export function register(password, email) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ password, email })
+    body: JSON.stringify({ password, email }),
+    credentials: "include",
   })
     .then((res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
 };
-export function authorize(password,email ) {
+export function authorize(password, email ) {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
+    mode: "cors",
+    credentials: "include",
     headers: {
       'Content-Type': 'application/json'
     },
@@ -23,32 +29,36 @@ export function authorize(password,email ) {
     .then((res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
 };
 
-export function checkToken(token) {
+export function checkToken() {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
+    mode: "cors",
+    credentials: "include",
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
-    }
+      'Content-Type': 'application/json'
+    },
   })
-    .then((res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)) 
+    .then((res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
 }
 
-// export function postQuestion(questionData) {
-//   return fetch(`${this._baseUrl}/questions`, {
-//     method: 'POST',
-//     headers: this._headers,
-//     body: JSON.stringify({
-//       image: `${questionData.image}`,
-//       mainText: `${questionData.mainText}`,
-//       subText: `${questionData.subText}`,
-//       theme: `${questionData.theme}`,
-//       line: `${questionData.line}`,
-//       source: `${questionData.source}`,
-//       answer: `${questionData.answer}`,
-//       explanation: `${questionData.subexplanationText}`,
-//       instruction: `${questionData.instruction}`,
-//     })
-//   })
-//     .then((res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
-// }
+export function postQuestion(questionData) {
+  return fetch(`${BASE_URL}/questions`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      image: `${questionData.image}`,
+      mainText: `${questionData.mainText}`,
+      subText: `${questionData.subText}`,
+      theme: `${questionData.theme}`,
+      line: `${questionData.line}`,
+      source: `${questionData.source}`,
+      answer: `${questionData.answer}`,
+      explanation: `${questionData.subexplanationText}`,
+      instruction: `${questionData.instruction}`,
+    }),
+    credentials: "include",
+  })
+    .then((res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+}

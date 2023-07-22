@@ -712,7 +712,7 @@ function App() {
       ]
     },
     {
-      title: "Беспозвоночные",
+      title: 'Беспозвоночные',
       questions: [
         'Что такое "лучевая симметрия тела"?',
         'Что такое "билатеральная симметрия тела"?',
@@ -899,9 +899,9 @@ function App() {
     },
   ]
   const [selectedTopics, setSelectedTopics] = useState([]);
-  const [newQuestionData, setNewQuestionData] = useState({});
+  // const [newQuestionData, setNewQuestionData] = useState({});
   const navigate = useNavigate();
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [email, setEmail] = useState('someemail@gmail.com');
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false);
@@ -919,36 +919,18 @@ function App() {
 
   // Функции и API-запросы регистрации, авторизации:
   useEffect(() => {
-    if (localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt')
-      api.checkToken(jwt)
-        .then(({ email }) => {
-          if (email) {
-            setEmail(email);
-          }
-        })
-        .then(() => {
-          setLoggedIn(true);
-          navigate('/');
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
-  }, []);
-  // useEffect(() => {
-  //   setEmail(localStorage.getItem('email'))
-  // }, []);
+    setEmail(currentUser.email)
+  }, [currentUser]);
 
   function onSignout() {
-    localStorage.clear('jwt');
     setLoggedIn(false);
   }
-  function onLogin(email, data) {
-    localStorage.setItem('jwt', data.token);
-    localStorage.setItem('email', email);
+  function onLogin(user) {
+    setCurrentUser(user);
 
     setLoggedIn(true);
+
+    navigate('/biozavr');
   }
   function handleRegister(password, email) {
     api.register(password, email)
@@ -962,15 +944,11 @@ function App() {
         infoTooltipSetter(true, false);
       })
   }
+
   function handleAuthorize(password, email) {
     api.authorize(password, email)
-      .then(data => {
-        if (data.token) {
-          onLogin(email, data)
-        }
-      })
-      .then(() => {
-        navigate('/');
+      .then(user => {
+        onLogin(user);
       })
       .catch((err) => {
         console.log(err)
@@ -979,14 +957,14 @@ function App() {
 
   function handleSubmitQuestion(questionData) {
     console.log(questionData);
-    //post запрос на создание экземпляра вопроса в базе
-    // api.postQuestion(questionData)
-    //   .then((question) => {
-    //     console.log(question)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
+    
+    api.postQuestion(questionData)
+      .then((question) => {
+        console.log(question)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (

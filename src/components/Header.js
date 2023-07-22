@@ -56,7 +56,7 @@ function Header({ email, loggedIn, onSignout }) {
 
               <li>
                 <Link
-                  to={loggedIn === false ? buttonInfo.path : '/'}
+                  to={loggedIn === false ? buttonInfo.path : '/biozavr'}
                   className='header__button'
                   style={loggedIn ? {} : { display: 'block' }}
                   onClick={onSignout}

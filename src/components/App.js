@@ -901,7 +901,7 @@ function App() {
   const [selectedTopics, setSelectedTopics] = useState([]);
   // const [newQuestionData, setNewQuestionData] = useState({});
   const navigate = useNavigate();
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
   const [email, setEmail] = useState('someemail@gmail.com');
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false);

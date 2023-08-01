@@ -62,3 +62,19 @@ export function postQuestion(questionData) {
   })
     .then((res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
 }
+
+export function deleteQuestion(questionId) {
+  return fetch(`${BASE_URL}/questions/${questionId}`, {
+    method: 'DELETE',
+    credentials: "include",
+  })
+    .then((res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+}
+
+export function getQuestions() {
+  return fetch(`${BASE_URL}/questions`, {
+    method: 'GET',
+    credentials: "include",
+  })
+    .then((res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
+}

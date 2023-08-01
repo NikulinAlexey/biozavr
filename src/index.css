@@ -67,11 +67,19 @@
 @import url(./blocks/add-form/__cell/add-form__cell.css);
 @import url(./blocks/add-form/__link/add-form__link.css);
 @import url(./blocks/add-form/__form/add-form__form.css);
+@import url(./blocks/add-form/__list/add-form__list.css);
 @import url(./blocks/add-form/__label/add-form__label.css);
 @import url(./blocks/add-form/__input/add-form__input.css);
 @import url(./blocks/add-form/__title/add-form__title.css);
 @import url(./blocks/add-form/__error/add-form__error.css);
 @import url(./blocks/add-form/__submit/add-form__submit.css);
+@import url(./blocks/add-form/__question/add-form__question.css);
+@import url(./blocks/add-form/__list-item/add-form__list-item.css);
 @import url(./blocks/add-form/__paragraph/add-form__paragraph.css);
+@import url(./blocks/add-form/__delete-button/add-form__delete-button.css);
 @import url(./blocks/add-form/__input/_type/add-form__input_type_error.css);
+@import url(./blocks/add-form/__question-title/add-form__question-title.css);
 @import url(./blocks/add-form/__submit/_type/add-form__submit_type_inactive.css);
+
+@import url(./blocks/question-list/question-list.css);
+@import url(./blocks/question-list/__button/question-list__button.css);

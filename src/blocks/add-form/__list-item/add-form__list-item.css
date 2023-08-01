@@ -1,0 +1,13 @@
+.add-form__list-item {
+  margin-bottom: 5px;
+}
+
+.add-form__list-item:last-of-type {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .add-form__list-item {
+    font-size: 14px;
+  }
+}

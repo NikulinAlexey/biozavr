@@ -1,0 +1,13 @@
+.question-list {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  font-family: inherit;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: minmax(min-content, max-content);
+  gap: 20px;
+  transition: all .3s ease-in-out;
+  padding-bottom: 20px;
+  padding-top: 100px;
+}

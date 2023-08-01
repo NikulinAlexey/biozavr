@@ -1,0 +1,6 @@
+.add-form__list {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  word-break: break-all;
+}

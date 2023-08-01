@@ -34,6 +34,7 @@ function QuizTopics({ topics, handleSelectTopic }) {
 
   useEffect(() => {
     const result = topics.filter(({ title }) => Object.keys(checked).includes(title));
+    
 
     setSelectedTopics(result);
   }, [checked, topics]);

@@ -8,6 +8,8 @@ import Main from './Main';
 import Login from './Login';
 import Header from './Header';
 import AddForm from './AddForm';
+import Questions from './Questions';
+import QuestionBank from './QuestionBank';
 // import Footer from './Footer';
 import * as api from '../utils/Api';
 import Register from './Register';
@@ -898,12 +900,11 @@ function App() {
       ]
     },
   ]
-  const [selectedTopics, setSelectedTopics] = useState([]);
-  // const [newQuestionData, setNewQuestionData] = useState({});
   const navigate = useNavigate();
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [questions, setQuestions] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [email, setEmail] = useState('someemail@gmail.com');
+  const [selectedTopics, setSelectedTopics] = useState([]);
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false);
   const [infoTooltip, setIsInfoTooltip] = useState({ isSuccessRegister: false, isOpen: false });
 
@@ -917,11 +918,7 @@ function App() {
     setSelectedTopics(chosenTopics);
   }
 
-  // Функции и API-запросы регистрации, авторизации:
-  useEffect(() => {
-    setEmail(currentUser.email)
-  }, [currentUser]);
-
+  // Функции и API-запросы:
   function onSignout() {
     setLoggedIn(false);
   }
@@ -944,7 +941,6 @@ function App() {
         infoTooltipSetter(true, false);
       })
   }
-
   function handleAuthorize(password, email) {
     api.authorize(password, email)
       .then(user => {
@@ -954,13 +950,29 @@ function App() {
         console.log(err)
       })
   }
-
-  function handleSubmitQuestion(questionData) {
-    console.log(questionData);
+  function handleAddQuestion(questionData) {
     
     api.postQuestion(questionData)
-      .then((question) => {
-        console.log(question)
+      .then((addedQuestion) => {
+        setQuestions([...questions, addedQuestion]);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+  function handleDeleteQuestion(questionId) {
+    api.deleteQuestion(questionId)
+      .then((deletedQuestion) => {
+        setQuestions(questions.filter(question => question._id !== deletedQuestion._id));
+      })
+      .catch((err) => {
+        console.log(err)
+      }) 
+  }
+  function handleGetAllQuestions() {
+    api.getQuestions()
+      .then((res) => {
+        setQuestions(res);
       })
       .catch((err) => {
         console.log(err)
@@ -970,25 +982,29 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header email={email} loggedIn={loggedIn} onSignout={onSignout} />
+        <Header loggedIn={loggedIn} onSignout={onSignout} email={currentUser.email} />
 
         <Routes>
-          <Route path="/biozavr" element={
-            <ProtectedRouteElement
-              element={Main}
-              loggedIn={loggedIn}
-              isSpinnerVisible={isSpinnerVisible}
-            />}
-          >
-            <Route path='quiz' element={<Quiz selectedTopics={selectedTopics} />} />
-            <Route path='quiz-topics' element={<QuizTopics topics={topics} handleSelectTopic={handleSelectTopic} />} />
-            <Route path='add-form' element={<AddForm handleSubmit={handleSubmitQuestion}/>}  />
+          <Route path="/biozavr" element={<ProtectedRouteElement element={Main} loggedIn={loggedIn} isSpinnerVisible={isSpinnerVisible} />} >
+            <Route path='quiz' element={<Quiz selectedTopics={selectedTopics} />}
+            />
+            <Route path='quiz-topics' element={<QuizTopics topics={topics} handleSelectTopic={handleSelectTopic} />}
+            />
+            <Route
+              path='question-bank'
+              element={
+                <QuestionBank
+                  questions={questions}
+                  handleSubmit={handleAddQuestion}
+                  handleDeleteQuestion={handleDeleteQuestion}
+                  handleGetAllQuestions={handleGetAllQuestions}
+                />}
+            >
+            </Route>
           </Route>
 
           <Route path='/sign-in' element={<Login handleAuthorize={handleAuthorize} />} />
-
           <Route path='/sign-up' element={<Register handleRegister={handleRegister} />} />
-
           <Route path='*' element={<PageNotFound loggedIn={loggedIn} />} />
         </Routes>
 

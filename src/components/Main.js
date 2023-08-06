@@ -14,7 +14,7 @@ function Main({
         <Outlet />
         {currentPath === '/biozavr' ?
           <ul className='content__link-list'>
-            <Link className='content__link-item' to='quiz-topics'>Выбрать тему квиза</Link>
+            <Link className='content__link-item' to='quiz-bank'>Перейти в банк квиза</Link>
             <Link className='content__link-item' to='question-bank'>Перейти в банк вопросов</Link>
           </ul>
           :

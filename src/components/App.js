@@ -3,19 +3,19 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext'
 
-import Quiz from './Quiz';
 import Main from './Main';
+import Quiz from './Quiz';
 import Login from './Login';
 import Header from './Header';
-import AddForm from './AddForm';
-import Questions from './Questions';
-import QuestionBank from './QuestionBank';
-// import Footer from './Footer';
-import * as api from '../utils/Api';
 import Register from './Register';
-import QuizTopics from './QuizTopics';
-import InfoTooltip from './InfoTooltip';
+import QuizBank from './QuizBank';
+import QuestionBank from './QuestionBank';
 import PageNotFound from './PageNotFound';
+
+// import Footer from './Footer';
+// import InfoTooltip from './InfoTooltip';
+
+import * as api from '../utils/Api';
 import ProtectedRouteElement from './ProtectedRouteElement';
 
 function App() {
@@ -23,7 +23,10 @@ function App() {
     {
       title: 'Введение',
       questions: [
-        "Назовите признак живого: Изменение частоты дыхательных движений в зависимости от концентрации в крови углекислого газа",
+        {
+          question: "Назовите признак живого: Изменение частоты дыхательных движений в зависимости от концентрации в крови углекислого газа",
+          image: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
+        },
         "Назовите признак живого: Сжимание гидры в комочек при прикосновении",
         "Назовите признак живого: Передача аллелей генов от родителей потомкам",
         "Назовите признак живого: Окисление глюкозы и синтез АТФ",
@@ -125,7 +128,7 @@ function App() {
         "Назовите метод: Наблюдение за плазмолизом в клетках кожицы лука",
         "Назовите метод: Разделение компонентов смеси за счет их различной скорости движения сквозь сорбент",
         "Назовите метод: Разделение частей клетки под действием центробежной силы",
-      ] 
+      ]
     },
     {
       title: 'Химический состав',
@@ -899,10 +902,12 @@ function App() {
         'Благодаря каким факторам насекомые - самый многочисленный класс животных?',
       ]
     },
-  ]
+  ];
+
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [quizTopics, setQuizTopics] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [isSpinnerVisible, setIsSpinnerVisible] = useState(false);
@@ -914,8 +919,8 @@ function App() {
   function infoTooltipSetter(isOpen, isSuccessRegister) {
     setIsInfoTooltip({ isSuccessRegister, isOpen });
   }
-  function handleSelectTopic(chosenTopics) {
-    setSelectedTopics(chosenTopics);
+  function handleSelectTopic(selectedTopics) {
+    setSelectedTopics(selectedTopics);
   }
 
   // Функции и API-запросы:
@@ -978,6 +983,26 @@ function App() {
         console.log(err)
       })
   }
+  // useEffect(() => {
+  //   api.getQuizTopics()
+  //     .then((topics) => {
+  //       setQuizTopics(topics);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
+  // }, []);
+
+  useEffect(() => {
+    
+    api.postQuizTopic(topics[0])
+      .then((addedTopic) => {
+        console.log('addedTopic', addedTopic)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  },[])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -986,10 +1011,8 @@ function App() {
 
         <Routes>
           <Route path="/biozavr" element={<ProtectedRouteElement element={Main} loggedIn={loggedIn} isSpinnerVisible={isSpinnerVisible} />} >
-            <Route path='quiz' element={<Quiz selectedTopics={selectedTopics} />}
-            />
-            <Route path='quiz-topics' element={<QuizTopics topics={topics} handleSelectTopic={handleSelectTopic} />}
-            />
+            <Route path='quiz-bank' element={<QuizBank quizTopics={quizTopics} handleSelectTopic={handleSelectTopic} />} />
+            <Route path='quiz-bank/quiz' element={<Quiz selectedTopics={selectedTopics} />} />
             <Route
               path='question-bank'
               element={
@@ -999,8 +1022,7 @@ function App() {
                   handleDeleteQuestion={handleDeleteQuestion}
                   handleGetAllQuestions={handleGetAllQuestions}
                 />}
-            >
-            </Route>
+            />
           </Route>
 
           <Route path='/sign-in' element={<Login handleAuthorize={handleAuthorize} />} />

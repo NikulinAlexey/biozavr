@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function QuizTopics({ topics, handleSelectTopic }) {
-  const [isEmptyData, setIsEmptyData] = useState(true);
+function QuizTopics({ quizTopics, handleSelectTopic }) {
   const navigate = useNavigate();
+  const [isEmptyData, setIsEmptyData] = useState(true);
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [checked, setChecked] = useState({});
 
@@ -15,7 +15,7 @@ function QuizTopics({ topics, handleSelectTopic }) {
     }
     else {
       handleSelectTopic(selectedTopics);
-      navigate("/biozavr/quiz");
+      navigate('quiz')
     }
   }
   
@@ -33,21 +33,22 @@ function QuizTopics({ topics, handleSelectTopic }) {
   }
 
   useEffect(() => {
-    const result = topics.filter(({ title }) => Object.keys(checked).includes(title));
+    const result = quizTopics.filter(({ title }) => Object.keys(checked).includes(title));
     
-
     setSelectedTopics(result);
-  }, [checked, topics]);
+
+    
+  }, [checked, quizTopics]);
 
   return (
     <section className="quiz-topics">
       <form className="quiz-topics__form" onSubmit={handleSubmit}>
         <ul className="quiz-topics__list">
-          {topics.map((topic,i) => (
-            <li className="quiz-topics__item" key={topic.title}>
+          {quizTopics.map((topic,i) => (
+            <li className="quiz-topics__item" key={i}>
               <label className="quiz-topics__label">
                 <input
-                  id={i}
+                  id={topic.title}
                   type="checkbox"
                   name={topic.title}
                   className="quiz-topics__input"

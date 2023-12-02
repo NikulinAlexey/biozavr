@@ -1468,10 +1468,23 @@ function App() {
   //     })
   // }, []);
 
+<<<<<<< HEAD
   // useEffect(() => {
   //   checkToken();
   // // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
+=======
+  useEffect(() => {
+
+    api.postQuizTopic(topics[0])
+      .then((addedTopic) => {
+        console.log('addedTopic', addedTopic)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, [])
+>>>>>>> refs/remotes/origin/main
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -1481,7 +1494,11 @@ function App() {
         <Routes>
           <Route path="/biozavr" element={<ProtectedRouteElement element={Main} loggedIn={loggedIn} isSpinnerVisible={isSpinnerVisible} />} >
             <Route path='quiz-bank' element={<QuizBank quizTopics={topics} handleSelectTopic={handleSelectTopic} />} />
+<<<<<<< HEAD
             <Route path='quiz' element={<Quiz selectedTopics={selectedTopics} />} />
+=======
+            <Route path='quiz-bank/quiz' element={<Quiz selectedTopics={selectedTopics} />} />
+>>>>>>> refs/remotes/origin/main
             <Route
               path='question-bank'
               element={

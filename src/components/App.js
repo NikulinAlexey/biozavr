@@ -1495,7 +1495,7 @@ function App() {
           <Route path="/biozavr" element={<ProtectedRouteElement element={Main} loggedIn={loggedIn} isSpinnerVisible={isSpinnerVisible} />} >
             <Route path='quiz-bank' element={<QuizBank quizTopics={topics} handleSelectTopic={handleSelectTopic} />} />
 <<<<<<< HEAD
-            <Route path='quiz' element={<Quiz selectedTopics={selectedTopics} />} />
+            <Route path='quiz-bak/quiz' element={<Quiz selectedTopics={selectedTopics} />} />
 =======
             <Route path='quiz-bank/quiz' element={<Quiz selectedTopics={selectedTopics} />} />
 >>>>>>> refs/remotes/origin/main

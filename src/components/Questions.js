@@ -20,7 +20,7 @@ function Questions({
       </button>
 
       {questions ?
-        questions.map((question, i) => (
+        questions.map((question) => (
           <Question
             key={question._id}
             question={question}

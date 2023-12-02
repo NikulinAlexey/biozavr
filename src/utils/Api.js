@@ -13,7 +13,7 @@ export function register(password, email) {
   })
     .then((res) => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`))
 };
-export function authorize(password, email ) {
+export function authorize(password, email) {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers,
